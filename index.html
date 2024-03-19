@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Jigsaw Puzzle</title>
         <link rel="stylesheet" href="style.css">
+        <script src="interactive.js" defer> </script> <!--Specify defer or async?-->
     </head>
 
     <body>
+        <header>
+
+        </header>
         <main>
             <section>
                 <h1>Complete the Jigsaw!</h1>
                 <div id="containers">
-                    <div id = "pieceContainer"></div>
-                    <div id = "puzzleContainer"></div>
-                    <ul id = "buttons">
-                        <li><button id = "start">start</button></li>
-                        <li><button id = "reset">reset</button></li>
-                    </ul>
+                    <div id = "piece-container"></div> <!--creating the puzzle piece -https://www.youtube.com/watch?app=desktop&v=b-WZjv5Xglc&ab_channel=PresentationProcess-->
+                    <div id = "puzzle-container"></div>
                 </div>
+                <ul id = "buttons">
+                    <li><button id = "start">start</button></li>
+                    <li><button id = "reset">reset</button></li>
+                </ul>
             </section>
-
-            <!--<canvas id="canvas" width="300" height="300"></canvas>-->
         </main>
       
     </body>
-
-    <script src="interactive.js"> </script> <!--Specify defer or async?-->
 </html>

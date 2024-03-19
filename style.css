@@ -1,19 +1,123 @@
-section{
-    grid-template-columns: auto;
-    grid-template-rows: auto auto;
+*{ 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
 }
 
+body { 
+    min-height: 100vh;
+    width: 100%; 
+}
+
+main {
+    min-height: 100vh;
+    width: 100%; 
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
 #containers{
-    display: flexbox;
+    display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 1px black;
+    gap: 4px;
 }
 
-#pieceContainer{
-    border: 1px black;
+#piece-container{
+    width: 600px; /*to adapt to image and media query*/
+    height: 30vh; /*to adapt to image and media query*/
+    border: 1px solid black; /*restyle when js complete*/
+    display: flex;
+    flex-direction: row;
 }
 
-#puzzleContainer{
-    border: 1px black;
+#puzzle-container{
+    width: 1000px; /*to adapt to image and media query*/
+    height: 60vh; /*to adapt to image and media query*/
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+
+.piece{
+    display: grid;
+}
+
+.piece0{
+    background-image: url(puzzle/img1.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece1{
+    background-image: url(puzzle/img2.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece2{
+    background-image: url(puzzle/img3.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece3{
+    background-image: url(puzzle/img4.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece4{
+    background-image: url(puzzle/img5.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece5{
+    background-image: url(puzzle/img6.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece6{
+    background-image: url(puzzle/img7.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece7{
+    background-image: url(puzzle/img8.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece8{
+    background-image: url(puzzle/img9.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece9{
+    background-image: url(puzzle/img10.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece10{
+    background-image: url(puzzle/img11.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+.piece11{
+    background-image: url(puzzle/img12.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
+    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+#start {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+#reset {
+    display: none;
+    list-style-type: none;
 }
