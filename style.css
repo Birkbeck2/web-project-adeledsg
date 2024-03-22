@@ -18,92 +18,103 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
 #containers{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
+    height: 100vh;
     gap: 4px;
 }
 
 #piece-container{
-    width: 600px; /*to adapt to image and media query*/
-    height: 30vh; /*to adapt to image and media query*/
-    border: 1px solid black; /*restyle when js complete*/
-    display: flex;
-    flex-direction: row;
+    width: 49%;
+    height: 100vh;
 }
 
 #puzzle-container{
-    width: 1000px; /*to adapt to image and media query*/
-    height: 60vh; /*to adapt to image and media query*/
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto;
-}
-
-.piece{
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 49%;
+    height: 100vh;
+    overflow: visible;
 }
 
 .piece0{
-    background-image: url(puzzle/img1.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .piece1{
-    background-image: url(puzzle/img2.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .piece2{
-    background-image: url(puzzle/img3.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .piece3{
-    background-image: url(puzzle/img4.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 50%;
+    align-items: center;
 }
 
-.piece4{
-    background-image: url(puzzle/img5.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+#img0{
+    position: relative;
+    z-index: 0; /* Set the z-index to control the stacking order */
+    width: 100%;
+    height: 120%; /* Increase height to overlap */
+    overflow: visible;
 }
 
-.piece5{
-    background-image: url(puzzle/img6.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+#img1{
+    position: relative;
+    z-index: 0;
+    width: 117%;
+    height: 103%; /* Increase height to overlap */
+    overflow: visible;
+    right: -1%;
 }
 
-.piece6{
-    background-image: url(puzzle/img7.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+#img2{
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    width: 116.5%;
+    height: 100%;
 }
 
-.piece7{
-    background-image: url(puzzle/img8.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
+#img3{
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    top: -16%;
+    width: 101%;
+    height: 116%;
 }
 
-.piece8{
-    background-image: url(puzzle/img9.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
-}
-
-.piece9{
-    background-image: url(puzzle/img10.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
-}
-
-.piece10{
-    background-image: url(puzzle/img11.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
-}
-
-.piece11{
-    background-image: url(puzzle/img12.jpg); /*https://www.w3schools.com/cssref/pr_background-image.php*/
-    background-repeat: no-repeat; /*Is this actually working? come back to double check*/
-}
 
 #buttons {
     display: flex;
