@@ -1,19 +1,122 @@
-section{
-    grid-template-columns: auto;
-    grid-template-rows: auto auto;
+*{ 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body { 
+    min-height: 100vh;
+    width: 100%; 
+}
+
+main {
+    min-height: 100vh;
+    width: 100%; 
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
 }
 
 #containers{
-    display: flexbox;
+    display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 1px black;
+    width: 96%;
+    height: 50vh;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 2% 2% 2% 2%;
+    gap: 1%;
 }
 
-#pieceContainer{
-    border: 1px black;
+#piece-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 49%;
+    height: 49%;
+    border: 1px solid black;
+    margin-top: 25%;
+    position: relative;
 }
 
-#puzzleContainer{
-    border: 1px black;
+#puzzle-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 49%;
+    height: 49%;
+    border: 1px solid black;
+    margin-top: 25%;
+}
+
+.piece{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 50%;
+    /*background-image: url(puzzle1/full-image.jpg);
+    background-repeat: no-repeat;*/
+}
+
+.drop-zone{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 50%;
+}
+
+#img0{
+    position: relative;
+    z-index: 0; /* Set the z-index to control the stacking order */
+    width: 100%;
+    height: 120%; /* Increase height to overlap */
+}
+
+#img1{
+    position: relative;
+    z-index: 0;
+    width: 117%;
+    height: 103%; /* Increase height to overlap */
+    left: -17%;
+
+}
+
+#img2{
+    position: relative;
+    z-index: 2;
+    width: 116.5%;
+    height: 100%;
+}
+
+#img3{
+    position: relative;
+    z-index: 1;
+    top: -16%;
+    width: 101%;
+    height: 116%;
+    left: -0.5%;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    font-size: 16px;
+}
+
+#start {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 2%;
+}
+
+#reset {
+    display: none;
+    list-style-type: none;
 }
