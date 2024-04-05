@@ -23,14 +23,23 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
-    height: 100vh;
-    gap: 4px;
+    width: 96%;
+    height: 50vh;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 2% 2% 2% 2%;
+    gap: 1%;
 }
 
 #piece-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 49%;
-    height: 100vh;
+    height: 49%;
+    border: 1px solid black;
+    margin-top: 25%;
+    position: relative;
 }
 
 #puzzle-container{
@@ -38,47 +47,27 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     width: 49%;
-    height: 100vh;
-    overflow: visible;
+    height: 49%;
+    border: 1px solid black;
+    margin-top: 25%;
 }
 
-.piece0{
+.piece{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    align-items: center;
-    justify-content: flex-start;
+    /*background-image: url(puzzle1/full-image.jpg);
+    background-repeat: no-repeat;*/
 }
 
-.piece1{
+.drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.piece2{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 50%;
-    height: 50%;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.piece3{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 50%;
-    height: 50%;
-    align-items: center;
 }
 
 #img0{
@@ -86,7 +75,6 @@ h1 {
     z-index: 0; /* Set the z-index to control the stacking order */
     width: 100%;
     height: 120%; /* Increase height to overlap */
-    overflow: visible;
 }
 
 #img1{
@@ -94,14 +82,13 @@ h1 {
     z-index: 0;
     width: 117%;
     height: 103%; /* Increase height to overlap */
-    overflow: visible;
-    right: -1%;
+    left: -17%;
+
 }
 
 #img2{
     position: relative;
     z-index: 2;
-    overflow: visible;
     width: 116.5%;
     height: 100%;
 }
@@ -109,23 +96,24 @@ h1 {
 #img3{
     position: relative;
     z-index: 1;
-    overflow: visible;
     top: -16%;
     width: 101%;
     height: 116%;
+    left: -0.5%;
 }
-
 
 #buttons {
     display: flex;
     justify-content: center;
     list-style-type: none;
+    font-size: 16px;
 }
 
 #start {
     display: flex;
     justify-content: center;
     list-style-type: none;
+    padding: 2%;
 }
 
 #reset {
