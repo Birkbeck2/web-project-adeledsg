@@ -87,40 +87,38 @@ Array.from(pieceDiv).forEach(function(pieceDiv, i){
 After programming drag and drop, I realised that it does not work for touch input, only mouse input. 
 Instead I need to use touch start, move and end. As such, to make my code as clear as possible, I have created 3 functions below. 
 Since event listeners can take 2 parameters, I am creating two events listeners. 
-Each take either drag or touch as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
+Each take either drag or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
 let draggablePiece = document.getElementsByClassName("piece");
-var globalDraggedItemId = null;
+var globalDraggedItemId = null; // set data and get data are method that do not work on touch event. Creating global variable to maintain state.
 
 function handleStart(e) {
     if (e.type === 'dragstart') {
         console.log(e);
-        e.dataTransfer.setData('text/plain', e.target.id); //Explain here - source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
+        e.dataTransfer.setData('text/plain', e.target.id); //Seeting the data to add id to my target element that is my div and retriving it in drop- source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
     } 
-    if (e.type === 'touchstart') { //this does not work
+    if (e.type === 'touchstart') { 
         e.preventDefault(); 
     }
-    globalDraggedItemId = e.target.id; 
+    globalDraggedItemId = e.target.id; // setting data
 }
 
-function handleOverMove(e){ //this does not work
+function handleOverMove(e){ 
     e.preventDefault();
 }
 
-function handleDropEnd(e){ 
+function handleDropEnd(e) { 
+    e.preventDefault();
+    let draggedItem;
     if (e.type === 'drop') {
-        e.preventDefault();
-        let data = e.dataTransfer.getData("text/plain");
-        let draggableElement = document.getElementById(data);
-        e.currentTarget.appendChild(draggableElement);
-    } 
-
-    if(e.type === 'touchend'){ //this does not work
-        e.preventDefault(); 
-        let draggedItem = document.getElementById(globalDraggedItemId);
-        dropZone.appendChild(draggedItem);
-        globalDraggedItemId = null;
-        }
-
+        let data = e.dataTransfer.getData("text/plain"); //retrieving id and moving it the div to target. 
+        draggedItem = document.getElementById(data); 
+    } else if (e.type === 'touchend') {
+        draggedItem = document.getElementById(globalDraggedItemId); 
+    }
+    if (draggedItem) {
+        e.currentTarget.appendChild(draggedItem);
+        globalDraggedItemId = null; // Reset the global variable
+    }
 }
 
 
