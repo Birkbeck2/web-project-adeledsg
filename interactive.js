@@ -30,25 +30,54 @@ img2.src = "puzzle1/Picture3.png";
 let img3 = document.getElementById("img3");
 img3.src = "puzzle1/Picture4.png"; 
 
-//II. Adding event listener: moving pieces (div which include their nested img) currently in Puzzle container to Piece container on click event.
-let startButton = document.getElementById("start");
+//II. Adding event listeners to start and reset buttons
 let pieceContainer = document.getElementById("piece-container");
 
-startButton.addEventListener("click", function(e){ // click event for touch, mouse and keyboard users: https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
-    let element = e.target;
-    e.preventDefault();
-    let pieces = document.getElementsByClassName("piece");
-    Array.from(pieces).forEach(function(piece){ //Find source for this line of code
-        let leftPosition = Math.floor(Math.random()*100); //giving them random position (need to change to make sure they are properly contained)
-        let topPosition = Math.floor(Math.random()*100);
-        piece.style.position = "absolute";
-        piece.style.left = `${leftPosition}%`;
-        piece.style.top = `${topPosition}%`
-        piece.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695
-        pieceContainer.appendChild(piece);
-    });
-})
+document.addEventListener('DOMContentLoaded', function () { // Assuring page is loaded
+    let startButton = document.getElementById('start');
+    let resetButton = document.getElementById('reset');
 
+    // Event listener for the start button
+    startButton.addEventListener('click', function(e){
+        startButton.style.display = 'none'; // Hiding the start button
+        resetButton.style.display = 'flex'; // Showing the reset button
+        let element = e.target; //moving pieces (div which include their nested img) currently in Puzzle container to Piece container on click event for start button.
+        e.preventDefault();
+        let pieces = document.getElementsByClassName("piece");
+        Array.from(pieces).forEach(function(piece){ //Find source for this line of code. Iterating through my piece divs.
+            let leftPosition = Math.floor(Math.random()*10); //giving them random position (need to change to make sure they are properly contained)
+            let topPosition = Math.floor(Math.random()*100);
+            piece.style.position = "absolute";
+            piece.style.left = `${leftPosition}%`;
+            piece.style.top = `${topPosition}%`
+            piece.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695
+            pieceContainer.appendChild(piece);
+        });
+        toggleOrder();
+    });
+
+    // Event listener for the reset button
+    resetButton.addEventListener('click', function(e) {
+        resetButton.style.display = 'none'; // Hiding the reset button
+        startButton.style.display = 'flex'; // Showing the start button
+        let element = e.target;
+        e.preventDefault();
+        let pieces = document.getElementsByClassName("piece");
+        Array.from(pieces).forEach(function(piece){
+            piece.style.removeProperty('left'); 
+            piece.style.removeProperty('top');
+            piece.style.removeProperty('position');
+            puzzleContainer.appendChild(piece);
+        });
+    });
+});
+
+function toggleOrder() { //I needed a function that modify the order of the div piece and div dropzone. Indeed, when clicking start, the piece would move and when reset will be visually below the dropzone div that are created below.
+    let pieces = document.getElementsByClassName('piece');
+    let dropZones = document.getElementsByClassName('drop-zone');
+    Array.from(pieces).forEach(piece => piece.style.order = '1');
+    Array.from(dropZones).forEach(dropZone => dropZone.style.order = '2');
+}
 
 //III. After adding the event, I realised that I needed to create new divs that will remain in the puzzle container so I can later drop the divs that have the nested img in them.
 function creatingDropZones() { 
@@ -89,7 +118,7 @@ Instead I need to use touch start, move and end. As such, to make my code as cle
 Since event listeners can take 2 parameters, I am creating two events listeners. 
 Each take either drag or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
 let draggablePiece = document.getElementsByClassName("piece");
-var globalDraggedItemId = null; // set data and get data are method that do not work on touch event. Creating global variable to maintain state.
+var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
 
 function handleStart(e) {
     if (e.type === 'dragstart') {
@@ -119,6 +148,8 @@ function handleDropEnd(e) {
         e.currentTarget.appendChild(draggedItem);
         globalDraggedItemId = null; // Reset the global variable
     }
+
+    checkPosition(); //calling function for alert messages below
 }
 
 
@@ -134,3 +165,44 @@ Array.from(dropZone).forEach(function(zone){
     zone.addEventListener('touchend', handleDropEnd);
 });
 
+// V. Finish message
+let correctPosition = { // creating an object using individual ids created earlier.
+    img0: "drop-0",
+    img1: "drop-1",
+    img2: "drop-2",
+    img3: "drop-3",
+};
+
+function checkPosition() {
+    let allPlaced = true;
+    let allCorrect = true;
+
+    for (let [imgId, dropId] of Object.entries(correctPosition)) { //iterating through my object that contains the correct positions of each piece.
+        let image = document.getElementById(imgId);
+        let currentDrop = image.parentElement.id;
+
+       // Checking if piece are placed or not in the drop zone divs
+       if (!image.parentElement || !image.parentElement.classList.contains('drop-zone')) {
+        allPlaced = false;
+        }
+
+        // Checking if the images' parents' id are that of the dropzone id = aka they are they correctly placed
+        if (currentDrop !== dropId) {
+        allCorrect = false;
+        }
+    }
+
+    if (allPlaced && !allCorrect) {// All pieces are placed, but some are wrong
+        setTimeout(() => {
+            alert("You are almost there! But some pieces are in the wrong place.");
+        }, 500); // Delay to allow for the puzzle to be visually completed before showing the message/
+    } else if (allPlaced && allCorrect) { // All pieces are placed correctly
+        setTimeout(() => {
+            alert("Congratulations! You completed the puzzle.");
+        }, 500);
+    }
+
+    return true;
+}
+
+// VI. Allowing user mistakes and going back
