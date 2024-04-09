@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
             piece.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695
             pieceContainer.appendChild(piece);
         });
-        toggleOrder();
     });
 
     // Event listener for the reset button
@@ -61,23 +60,10 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
         resetButton.style.display = 'none'; // Hiding the reset button
         startButton.style.display = 'flex'; // Showing the start button
         let element = e.target;
-        e.preventDefault();
-        let pieces = document.getElementsByClassName("piece");
-        Array.from(pieces).forEach(function(piece){
-            piece.style.removeProperty('left'); 
-            piece.style.removeProperty('top');
-            piece.style.removeProperty('position');
-            puzzleContainer.appendChild(piece);
-        });
+        window.location.reload(); // https://www.freecodecamp.org/news/javascript-refresh-page-how-to-reload-a-page-in-js/#:~:text=The%20simplest%20way%20to%20refresh,and%20loading%20the%20latest%20content.
     });
 });
 
-function toggleOrder() { //I needed a function that modify the order of the div piece and div dropzone. Indeed, when clicking start, the piece would move and when reset will be visually below the dropzone div that are created below.
-    let pieces = document.getElementsByClassName('piece');
-    let dropZones = document.getElementsByClassName('drop-zone');
-    Array.from(pieces).forEach(piece => piece.style.order = '1');
-    Array.from(dropZones).forEach(dropZone => dropZone.style.order = '2');
-}
 
 //III. After adding the event, I realised that I needed to create new divs that will remain in the puzzle container so I can later drop the divs that have the nested img in them.
 function creatingDropZones() { 
