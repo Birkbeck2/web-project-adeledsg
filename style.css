@@ -2,6 +2,8 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
+    font-size: 16px;
+    font-family: Helvetica, Arial, sans-serif
 }
 
 body, main { 
@@ -16,6 +18,70 @@ body, main {
 h1 {
     display: flex;
     justify-content: center;
+}
+
+.button{
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5% 5% 5% 5%;
+    border: none;
+    border-radius: 4px;
+}
+
+#puzzle1{
+    background-color: #90EE90;
+}
+
+#puzzle2{
+    background-color: #FFA07A;
+}
+
+#puzzle3{
+    background-color: #FF6347;
+}
+
+#leave {
+    background-color: #4682B4;
+}
+
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    font-size: 16px;
+    gap: 2px;
+}
+
+#start {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5% 5% 5% 5%;
+    border: none;
+    border-radius: 4px;
+    background-color: #D8BFD8;
+}
+
+#reset {
+    display: none;
+    list-style-type: none;
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin: 5% 5% 5% 5%;
+    border: none;
+    border-radius: 4px;
+    background-color: #D8BFD8;
 }
 
 @media (max-width: 767px) and (orientation: portrait) { /*Orientation property: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/orientation*/
@@ -99,24 +165,6 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }
 
 @media (max-width: 767px) and (orientation: landscape){
@@ -200,24 +248,6 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
@@ -301,24 +331,6 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
@@ -402,24 +414,6 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }
 
 @media only screen and (min-width: 1024px) and (orientation: portrait){
@@ -503,24 +497,6 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }
 
 @media only screen and (min-width: 1024px) and (orientation: landscape){
@@ -604,24 +580,6 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }
 
 @media only screen and (min-width: 1200px){
@@ -705,24 +663,6 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }
 
 @media only screen and (min-width: 1400px){
@@ -806,22 +746,4 @@ h1 {
     left: -1%;
 }
 
-#buttons {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    font-size: 16px;
-}
-
-#start {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 2%;
-}
-
-#reset {
-    display: none;
-    list-style-type: none;
-}
 }

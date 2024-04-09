@@ -6,7 +6,6 @@
         <title>Jigsaw Puzzle</title>
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="interactive.js" defer> </script> <!--Specify defer or async?-->
     </head>
 
     <body>
@@ -15,17 +14,13 @@
         </header>
         <main>
             <section>
-                <h1>Puzzle 1</h1>
+                <h1>Pick a jigsaw to complete!</h1>
                 <ul id = "buttons">
-                    <li><button id = "start">start</button></li>
-                    <li><button id = "reset">reset</button></li>
+                    <li><a href="puzzle1.html" id="puzzle1" class="button">Puzzle 1 (Easy)</a></li>
+                    <li><a href="puzzle2.html" id="puzzle2" class="button">Puzzle 2 (Medium)</a></li>
+                    <li><a href="puzzle3.html" id="puzzle3" class="button">Puzzle 3 (Hard)</a></li>
                 </ul>
-                <div id="containers">
-                    <div id = "piece-container"></div> <!--creating the puzzle piece -https://www.youtube.com/watch?app=desktop&v=b-WZjv5Xglc&ab_channel=PresentationProcess-->
-                    <div id = "puzzle-container"></div>
-                </div>
             </section>
-        </main>
-      
+        </main> 
     </body>
 </html>
