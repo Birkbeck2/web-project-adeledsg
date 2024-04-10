@@ -12,7 +12,9 @@ function creatingGrid() {
         pieceDiv.className = "piece";
         puzzleContainer.appendChild(pieceDiv); //dynamically created 4 divs with class name and nested them in puzzlecontainer.
         let img = document.createElement("img");
+        img.className = "images";
         img.id = `img${i}`;
+        img.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695 
         pieceDiv.appendChild(img); //dynamically created 4  with individual id elements and nested them in the divs above.
     }
 }
@@ -38,19 +40,25 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
     let resetButton = document.getElementById('reset');
 
     // Event listener for the start button
+    let drop0 = document.getElementById("drop-0");
+    let drop3 = document.getElementById("drop-3");
+
     startButton.addEventListener('click', function(e){
         startButton.style.display = 'none'; // Hiding the start button
         resetButton.style.display = 'flex'; // Showing the reset button
+        drop0.style.borderBottom = "1px solid black"; //Adding borders to some of the dropZone divs when start is clicked to give user indications of the pieces' places
+        drop0.style.borderRight = "1px solid black";
+        drop3.style.borderTop = "1px solid black";
+        drop3.style.borderLeft = "1px solid black";
+        let pieces = document.getElementsByClassName("piece");
         let element = e.target; //moving pieces (div which include their nested img) currently in Puzzle container to Piece container on click event for start button.
         e.preventDefault();
-        let pieces = document.getElementsByClassName("piece");
-        Array.from(pieces).forEach(function(piece){ //Find source for this line of code. Iterating through my piece divs.
-            let leftPosition = Math.floor(Math.random()*10); //giving them random position (need to change to make sure they are properly contained)
-            let topPosition = Math.floor(Math.random()*100);
+        Array.from(pieces).forEach(function(piece){ //Iterating through my piece divs (DOM interprets it as an array)
+            let leftPosition = Math.floor(Math.random()*50); //giving them random position (iterated through numbers for the multiplier to make sure that the piece where relatively contained within the piece container.
+            let topPosition = Math.floor(Math.random()*50);
             piece.style.position = "absolute";
             piece.style.left = `${leftPosition}%`;
             piece.style.top = `${topPosition}%`
-            piece.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695
             pieceContainer.appendChild(piece);
         });
     });
@@ -85,15 +93,13 @@ creatingDropZones();
 let dropZone = document.getElementsByClassName("drop-zone");
 
 Array.from(dropZone).forEach(function(dropZone, i){
-    let uniqueId = `drop-${i}`;
-    dropZone.id = uniqueId;
+    dropZone.id = `drop-${i}`; 
 });
 
 let pieceDiv = document.getElementsByClassName("piece");
 
 Array.from(pieceDiv).forEach(function(pieceDiv, i){
-    let uniqueId = `drag-${i}`;
-    pieceDiv.id = uniqueId;
+    pieceDiv.id = `drag-${i}`;
 });
 
 //B. Adding drag and drop events to the divs. Source: https://www.youtube.com/watch?v=_G8G1OrEOrI&ab_channel=DarwinTech
@@ -103,25 +109,26 @@ After programming drag and drop, I realised that it does not work for touch inpu
 Instead I need to use touch start, move and end. As such, to make my code as clear as possible, I have created 3 functions below. 
 Since event listeners can take 2 parameters, I am creating two events listeners. 
 Each take either drag or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
-let draggablePiece = document.getElementsByClassName("piece");
+let draggableImages = document.getElementsByClassName("images");
+let originalPlace = document.getElementsByClassName("piece");
 var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
 
 function handleStart(e) {
     if (e.type === 'dragstart') {
         console.log(e);
-        e.dataTransfer.setData('text/plain', e.target.id); //Seeting the data to add id to my target element that is my div and retriving it in drop- source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
+        e.dataTransfer.setData('text/plain', e.currentTarget.id); //Seeting the data to add id to my target element that is my div and retriving it in drop- source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
     } 
     if (e.type === 'touchstart') { 
         e.preventDefault(); 
     }
-    globalDraggedItemId = e.target.id; // setting data
+    globalDraggedItemId = e.currentTarget.id; // setting data
 }
 
 function handleOverMove(e){ 
     e.preventDefault();
 }
 
-function handleDropEnd(e) { 
+function handleDropEnd(e) { //modify this function with some sort of if statement so that no bug with touch event. (what is hapenign is that the img are otherwise already nested in a drop and cant be moved to drop zones)
     e.preventDefault();
     let draggedItem;
     if (e.type === 'drop') {
@@ -139,9 +146,9 @@ function handleDropEnd(e) {
 }
 
 
-Array.from(draggablePiece).forEach(function(piece){ //Iterating through each element and assigning touch and mouse event to each.
-    piece.addEventListener('dragstart', handleStart);
-    piece.addEventListener('touchstart', handleStart);
+Array.from(draggableImages).forEach(function(image){ //Iterating through each element and assigning touch and mouse event to each.
+    image.addEventListener('dragstart', handleStart);
+    image.addEventListener('touchstart', handleStart);
 });
 
 Array.from(dropZone).forEach(function(zone){ 
@@ -151,6 +158,14 @@ Array.from(dropZone).forEach(function(zone){
     zone.addEventListener('touchend', handleDropEnd);
 });
 
+/* This works for drag but for touch, I need to do some sort of if else statement so the browser detects the correct dropzones/original.
+Array.from(originalPlace).forEach(function(place){ 
+    place.addEventListener('dragover', handleOverMove);
+    place.addEventListener('touchmove', handleOverMove);
+    place.addEventListener('drop', handleDropEnd);
+    place.addEventListener('touchend', handleDropEnd);
+});
+*/
 // V. Finish message
 let correctPosition = { // creating an object using individual ids created earlier.
     img0: "drop-0",
@@ -181,7 +196,7 @@ function checkPosition() {
     if (allPlaced && !allCorrect) {// All pieces are placed, but some are wrong
         setTimeout(() => {
             alert("You are almost there! But some pieces are in the wrong place.");
-        }, 500); // Delay to allow for the puzzle to be visually completed before showing the message/
+        }, 500); // Delay to allow for the puzzle to be visually completed before showing the message
     } else if (allPlaced && allCorrect) { // All pieces are placed correctly
         setTimeout(() => {
             alert("Congratulations! You completed the puzzle.");
@@ -191,4 +206,4 @@ function checkPosition() {
     return true;
 }
 
-// VI. Allowing user mistakes and going back
+// VI. Allowing user mistakes and dragging/touching pieces back => being done above
