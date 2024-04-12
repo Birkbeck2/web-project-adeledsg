@@ -21,16 +21,16 @@ function creatingGrid() {
 creatingGrid();
 
 let img0 = document.getElementById("img0");
-img0.src = "puzzle1/Picture1.png"; //adding the source for the img elements created above.
+img0.src = "puzzle1/piece1.png"; //adding the source for the img elements created above.
 
 let img1 = document.getElementById("img1");
-img1.src = "puzzle1/Picture2.png"; 
+img1.src = "puzzle1/piece2.png"; 
 
 let img2 = document.getElementById("img2");
-img2.src = "puzzle1/Picture3.png"; 
+img2.src = "puzzle1/piece3.png"; 
 
 let img3 = document.getElementById("img3");
-img3.src = "puzzle1/Picture4.png"; 
+img3.src = "puzzle1/piece4.png"; 
 
 //II. Adding event listeners to start and reset buttons
 let pieceContainer = document.getElementById("piece-container");
@@ -114,6 +114,7 @@ let originalPlace = document.getElementsByClassName("piece");
 var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
 
 function handleStart(e) {
+    e.stopPropagation();
     if (e.type === 'dragstart') {
         console.log(e);
         e.dataTransfer.setData('text/plain', e.currentTarget.id); //Seeting the data to add id to my target element that is my div and retriving it in drop- source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
@@ -126,10 +127,12 @@ function handleStart(e) {
 
 function handleOverMove(e){ 
     e.preventDefault();
+    e.stopPropagation();
 }
 
 function handleDropEnd(e) { //modify this function with some sort of if statement so that no bug with touch event. (what is hapenign is that the img are otherwise already nested in a drop and cant be moved to drop zones)
     e.preventDefault();
+    e.stopPropagation();
     let draggedItem;
     if (e.type === 'drop') {
         let data = e.dataTransfer.getData("text/plain"); //retrieving id and moving it the div to target. 
@@ -158,8 +161,8 @@ Array.from(dropZone).forEach(function(zone){
     zone.addEventListener('touchend', handleDropEnd);
 });
 
-/* This works for drag but for touch, I need to do some sort of if else statement so the browser detects the correct dropzones/original.
-Array.from(originalPlace).forEach(function(place){ 
+ /*This works for drag but for touch, I need to do some sort of if else statement so the browser detects the correct dropzones/original.
+ Array.from(originalPlace).forEach(function(place){ 
     place.addEventListener('dragover', handleOverMove);
     place.addEventListener('touchmove', handleOverMove);
     place.addEventListener('drop', handleDropEnd);

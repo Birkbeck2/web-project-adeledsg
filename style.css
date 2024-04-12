@@ -126,21 +126,36 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%; 
 }
+
 
 #img1{
     position: relative;
@@ -151,18 +166,83 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+#image0 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+}
+
+#image1 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -4%;
+}
+
+#image2{
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -13%;
+}
+
+#image3{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+}
+
+#image4{
+    position: relative;
+    width: 110%;
+    height: 110%;
+    bottom: 2.4%;
+    left: -4%;
+}
+
+
+#image5{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -13%;
+}
+
+#image6{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 9%;
+}
+
+#image7{
+    position: relative;
+    width: 110%;
+    height: 109%;
+    bottom: 8%;
+    left: -3%;
+}
+
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -13%;
+    bottom: 9%;
 }
 
 }
@@ -209,18 +289,32 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%; 
 }
@@ -234,18 +328,83 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+#image0 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+}
+
+#image1 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -4%;
+}
+
+#image2{
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -13%;
+}
+
+#image3{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+}
+
+#image4{
+    position: relative;
+    width: 110%;
+    height: 110%;
+    bottom: 2.4%;
+    left: -4%;
+}
+
+
+#image5{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -13%;
+}
+
+#image6{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 9%;
+}
+
+#image7{
+    position: relative;
+    width: 110%;
+    height: 109%;
+    bottom: 8%;
+    left: -3%;
+}
+
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -13%;
+    bottom: 9%;
 }
 
 }
@@ -292,18 +451,32 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%; /* Increased height to overlap */
 }
@@ -317,18 +490,83 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+#image0 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+}
+
+#image1 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -4%;
+}
+
+#image2{
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -13%;
+}
+
+#image3{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+}
+
+#image4{
+    position: relative;
+    width: 110%;
+    height: 110%;
+    bottom: 2.4%;
+    left: -4%;
+}
+
+
+#image5{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -13%;
+}
+
+#image6{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 9%;
+}
+
+#image7{
+    position: relative;
+    width: 110%;
+    height: 108%;
+    bottom: 7%;
+    left: -3%;
+}
+
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -13%;
+    bottom: 9%;
 }
 
 }
@@ -375,18 +613,32 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%;
 }
@@ -400,18 +652,84 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+
+#image0 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+}
+
+#image1 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -4%;
+}
+
+#image2{
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -13%;
+}
+
+#image3{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+}
+
+#image4{
+    position: relative;
+    width: 110%;
+    height: 110%;
+    bottom: 2.4%;
+    left: -4%;
+}
+
+
+#image5{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -13%;
+}
+
+#image6{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 9%;
+}
+
+#image7{
+    position: relative;
+    width: 110%;
+    height: 108%;
+    bottom: 7%;
+    left: -1%;
+}
+
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -13%;
+    bottom: 9%;
 }
 
 }
@@ -458,18 +776,32 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%;
 }
@@ -483,18 +815,83 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+#image0 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+}
+
+#image1 {
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -4%;
+}
+
+#image2{
+    position: relative;
+    width: 116%;
+    height: 115%;
+    left: -13%;
+}
+
+#image3{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+}
+
+#image4{
+    position: relative;
+    width: 110%;
+    height: 110%;
+    bottom: 2.4%;
+    left: -4%;
+}
+
+
+#image5{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -13%;
+}
+
+#image6{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    bottom: 9%;
+}
+
+#image7{
+    position: relative;
+    width: 110%;
+    height: 108%;
+    bottom: 7%;
+    left: -1%;
+}
+
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -13%;
+    bottom: 9%;
 }
 
 }
@@ -541,18 +938,32 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%;
 }
@@ -566,18 +977,83 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+#image0 {
+    position: relative;
+    width: 130%;
+    height: 130%;
+}
+
+#image1 {
+    position: relative;
+    width: 120%;
+    height: 117%;
+    left: 9%;
+}
+
+#image2{
+    position: relative;
+    width: 130%;
+    height: 110%;
+    left: -8%;
+}
+
+#image3{
+    position: relative;
+    width: 120%;
+    height: 115%;
+    bottom: 10%;
+}
+
+#image4{
+    position: relative;
+    width: 105%;
+    height: 115%;
+    bottom: 10%;
+    left: 1%;
+}
+
+
+#image5{
+    position: relative;
+    width: 115%;
+    height: 116%;
+    bottom: 9%;
+    left: -12%;
+}
+
+#image6{
+    position: relative;
+    width: 130%;
+    height: 119%;
+    bottom: 18%;
+}
+
+#image7{
+    position: relative;
+    width: 150%;
+    height: 115%;
+    bottom: 14%;
+    left: 1%;
+}
+
+#image8{
+    position: relative;
+    width: 120%;
+    height: 119%;
+    left: -14%;
+    bottom: 18%;
 }
 
 }
@@ -624,18 +1100,32 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%;
 }
@@ -649,18 +1139,83 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+#image0 {
+    position: relative;
+    width: 120%;
+    height: 120%;
+}
+
+#image1 {
+    position: relative;
+    width: 110%;
+    height: 115%;
+    left: 1%;
+}
+
+#image2{
+    position: relative;
+    width: 110%;
+    height: 115%;
+    left: -8%;
+}
+
+#image3{
+    position: relative;
+    width: 120%;
+    height: 110%;
+    bottom: 2%;
+}
+
+#image4{
+    position: relative;
+    width: 110%;
+    height: 110%;
+    bottom: 2%;
+    left: 1%;
+}
+
+
+#image5{
+    position: relative;
+    width: 110%;
+    height: 108%;
+    bottom: 1%;
+    left: -7%;
+}
+
+#image6{
+    position: relative;
+    width: 120%;
+    height: 110%;
+    bottom: 9%;
+}
+
+#image7{
+    position: relative;
+    width: 110%;
+    height: 108%;
+    bottom: 7%;
+    left: 1%;
+}
+
+#image8{
+    position: relative;
+    width: 110%;
+    height: 112%;
+    left: -7%;
+    bottom: 11%;
 }
 
 }
@@ -707,18 +1262,32 @@ h1 {
     height: 50%;
 }
 
+.piece2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
+}
+
 .drop-zone{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     height: 50%;
-    aspect-ratio: 1;
+}
+
+.drop-zone2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: 33%;
 }
 
 #img0{
     position: relative;
-    z-index: 0;
     width: 100%;
     height: 120%; 
 }
@@ -732,18 +1301,83 @@ h1 {
 
 #img2{
     position: relative;
-    z-index: 2;
     width: 116.5%;
     height: 100%
 }
 
 #img3{
     position: relative;
-    z-index: 1;
     top: -16%;
     width: 101%;
     height: 116%;
     left: -1%;
+}
+
+#image0 {
+    position: relative;
+    width: 130%;
+    height: 130%;
+}
+
+#image1 {
+    position: relative;
+    width: 120%;
+    height: 117%;
+    left: 3%;
+}
+
+#image2{
+    position: relative;
+    width: 130%;
+    height: 110%;
+    left: -16%;
+}
+
+#image3{
+    position: relative;
+    width: 120%;
+    height: 115%;
+    bottom: 10%;
+}
+
+#image4{
+    position: relative;
+    width: 105%;
+    height: 115%;
+    bottom: 10%;
+    left: 1%;
+}
+
+
+#image5{
+    position: relative;
+    width: 115%;
+    height: 116%;
+    bottom: 9%;
+    left: -12%;
+}
+
+#image6{
+    position: relative;
+    width: 130%;
+    height: 119%;
+    bottom: 18%;
+}
+
+#image7{
+    position: relative;
+    width: 150%;
+    height: 115%;
+    bottom: 14%;
+    left: 1%;
+}
+
+#image8{
+    position: relative;
+    width: 115%;
+    height: 119%;
+    left: -12%;
+    bottom: 18%;
 }
 
 }
