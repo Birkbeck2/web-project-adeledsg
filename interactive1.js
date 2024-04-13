@@ -114,7 +114,7 @@ let originalPlace = document.getElementsByClassName("piece");
 var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
 
 function handleStart(e) {
-    e.stopPropagation();
+    e.stopPropagation(); //trying to ensure that the click event is just on the image not its parent
     if (e.type === 'dragstart') {
         console.log(e);
         e.dataTransfer.setData('text/plain', e.currentTarget.id); //Seeting the data to add id to my target element that is my div and retriving it in drop- source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData

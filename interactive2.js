@@ -117,18 +117,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 let draggableImages = document.getElementsByClassName("images");
 //let originalPlace = document.getElementsByClassName("piece2");
-var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
+var globalDraggedItemId = null;
 
 function handleStart(e) {
     e.stopPropagation();
     if (e.type === 'dragstart') {
         console.log(e);
-        e.dataTransfer.setData('text/plain', e.currentTarget.id); //Seeting the data to add id to my target element that is my div and retriving it in drop- source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
+        e.dataTransfer.setData('text/plain', e.currentTarget.id); 
     } 
     if (e.type === 'touchstart') { 
         e.preventDefault();
     }
-    globalDraggedItemId = e.currentTarget.id; // setting data
+    globalDraggedItemId = e.currentTarget.id; 
 }
 
 function handleOverMove(e){ 
@@ -136,25 +136,25 @@ function handleOverMove(e){
     e.stopPropagation();
 }
 
-function handleDropEnd(e) { //modify this function with some sort of if statement so that no bug with touch event. (what is hapenign is that the img are otherwise already nested in a drop and cant be moved to drop zones)
+function handleDropEnd(e) { 
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); 
     let draggedItem;
     if (e.type === 'drop') {
-        let data = e.dataTransfer.getData("text/plain"); //retrieving id and moving it the div to target. 
+        let data = e.dataTransfer.getData("text/plain");
         draggedItem = document.getElementById(data); 
     } else if (e.type === 'touchend') {
         draggedItem = document.getElementById(globalDraggedItemId); 
     }
     if (draggedItem) {
         e.currentTarget.appendChild(draggedItem);
-        globalDraggedItemId = null; // Reset the global variable
+        globalDraggedItemId = null;
     }
 
-    checkPosition(); //calling function for alert messages below
+    checkPosition();
 }
 
-Array.from(draggableImages).forEach(function(image){ //Iterating through each element and assigning touch and mouse event to each.
+Array.from(draggableImages).forEach(function(image){
     image.addEventListener('dragstart', handleStart);
     image.addEventListener('touchstart', handleStart);
 });
@@ -166,8 +166,17 @@ Array.from(dropZone).forEach(function(zone){
     zone.addEventListener('touchend', handleDropEnd);
 });
 
+ /*This works for drag but for touch, I need to do some sort of if else statement so the browser detects the correct dropzones/original.
+ Array.from(originalPlace).forEach(function(place){ 
+    place.addEventListener('dragover', handleOverMove);
+    place.addEventListener('touchmove', handleOverMove);
+    place.addEventListener('drop', handleDropEnd);
+    place.addEventListener('touchend', handleDropEnd);
+});
+*/
 
-let correctPosition = { // creating an object using individual ids created earlier.
+
+let correctPosition = {
     image0: "droping-0",
     image1: "droping-1",
     image2: "droping-2",
@@ -183,26 +192,24 @@ function checkPosition() {
     let allPlaced = true;
     let allCorrect = true;
 
-    for (let [imgId, dropId] of Object.entries(correctPosition)) { //iterating through my object that contains the correct positions of each piece.
+    for (let [imgId, dropId] of Object.entries(correctPosition)) {
         let image = document.getElementById(imgId);
         let currentDrop = image.parentElement.id;
 
-       // Checking if piece are placed or not in the drop zone divs
        if (!image.parentElement || !image.parentElement.classList.contains('drop-zone2')) {
         allPlaced = false;
         }
 
-        // Checking if the images' parents' id are that of the dropzone id = aka they are they correctly placed
         if (currentDrop !== dropId) {
         allCorrect = false;
         }
     }
 
-    if (allPlaced && !allCorrect) {// All pieces are placed, but some are wrong
+    if (allPlaced && !allCorrect) {
         setTimeout(() => {
             alert("You are almost there! But some pieces are in the wrong place.");
-        }, 500); // Delay to allow for the puzzle to be visually completed before showing the message
-    } else if (allPlaced && allCorrect) { // All pieces are placed correctly
+        }, 500);
+    } else if (allPlaced && allCorrect) {
         setTimeout(() => {
             alert("Congratulations! You completed the puzzle.");
         }, 500);
