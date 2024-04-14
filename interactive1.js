@@ -110,7 +110,7 @@ Instead I need to use touch start, move and end. As such, to make my code as cle
 Since event listeners can take 2 parameters, I am creating two events listeners. 
 Each take either drag or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
 let draggableImages = document.getElementsByClassName("images");
-let originalPlace = document.getElementsByClassName("piece");
+let piece = document.getElementsByClassName("piece");
 var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
 
 function handleStart(e) {
@@ -128,6 +128,10 @@ function handleStart(e) {
 function handleOverMove(e){ 
     e.preventDefault();
     e.stopPropagation();
+    let draggedImage = e.currentTarget; 
+    draggedImage.style.zIndex = 1000;  // Without giving high index to the images and low to their divs, clicking on images didnt work if a div was above it.
+    let originalContainer = draggedImage.parentElement;
+    originalContainer.style.zIndex = 1; 
 }
 
 function handleDropEnd(e) { //modify this function with some sort of if statement so that no bug with touch event. (what is hapenign is that the img are otherwise already nested in a drop and cant be moved to drop zones)
@@ -161,14 +165,19 @@ Array.from(dropZone).forEach(function(zone){
     zone.addEventListener('touchend', handleDropEnd);
 });
 
- /*This works for drag but for touch, I need to do some sort of if else statement so the browser detects the correct dropzones/original.
- Array.from(originalPlace).forEach(function(place){ 
-    place.addEventListener('dragover', handleOverMove);
-    place.addEventListener('touchmove', handleOverMove);
-    place.addEventListener('drop', handleDropEnd);
-    place.addEventListener('touchend', handleDropEnd);
+ //This works for drag but for touch, I need to do some sort of if else statement so the browser detects the correct dropzones/original.
+ /*Array.from(piece).forEach(function(pieces){ 
+    if (pieces.querySelector('img') === null){
+        console.log(pieces);
+        pieces.addEventListener('dragover', handleOverMove);
+        pieces.addEventListener('touchmove', handleOverMove);
+        pieces.addEventListener('drop', handleDropEnd);
+        pieces.addEventListener('touchend', handleDropEnd);
+    } 
 });
 */
+
+
 // V. Finish message
 let correctPosition = { // creating an object using individual ids created earlier.
     img0: "drop-0",

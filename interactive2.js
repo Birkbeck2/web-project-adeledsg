@@ -114,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 let draggableImages = document.getElementsByClassName("images");
 //let originalPlace = document.getElementsByClassName("piece2");
 var globalDraggedItemId = null;
@@ -134,6 +133,10 @@ function handleStart(e) {
 function handleOverMove(e){ 
     e.preventDefault();
     e.stopPropagation();
+    let draggedImage = e.currentTarget;
+    draggedImage.style.zIndex = 1000;  
+    let originalContainer = draggedImage.parentElement;
+    originalContainer.style.zIndex = 1; 
 }
 
 function handleDropEnd(e) { 
@@ -210,6 +213,9 @@ function checkPosition() {
             alert("You are almost there! But some pieces are in the wrong place.");
         }, 500);
     } else if (allPlaced && allCorrect) {
+        Array.from(dropZone).forEach(function(drop){ //purely aesthetics considerations, otherwise, we would see the borders
+            drop.style.border = "none";
+        })
         setTimeout(() => {
             alert("Congratulations! You completed the puzzle.");
         }, 500);
