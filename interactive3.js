@@ -160,20 +160,27 @@ function handleOverMove(e){
 
 function handleDropEnd(e) { 
     e.preventDefault();
-    e.stopPropagation(); 
-    let draggedItem;
-    if (e.type === 'drop') {
-        let data = e.dataTransfer.getData("text/plain");
-        draggedItem = document.getElementById(data); 
-    } else if (e.type === 'touchend') {
-        draggedItem = document.getElementById(globalDraggedItemId); 
-    }
-    if (draggedItem) {
-        e.currentTarget.appendChild(draggedItem);
-        globalDraggedItemId = null;
-    }
+    e.stopPropagation();
 
-    checkPosition();
+    let draggedItem;
+    let targetContainer = e.currentTarget;
+
+    if (targetContainer.querySelector('img')){ 
+
+    } else {
+        if (e.type === 'drop') {
+            let data = e.dataTransfer.getData("text/plain"); 
+            draggedItem = document.getElementById(data); 
+        } else if (e.type === 'touchend') {
+            draggedItem = document.getElementById(globalDraggedItemId); 
+        }
+        if (draggedItem) {
+            e.currentTarget.appendChild(draggedItem);
+            globalDraggedItemId = null; 
+        }
+    
+        checkPosition();
+    }
 }
 
 Array.from(draggableImages).forEach(function(image){

@@ -1260,9 +1260,9 @@ button:hover, button:focus {
 }
 #images11{
     position: relative;
-    width: 110%;
-    height: 125%;
-    left: -3%;
+    width: 117%;
+    height: 130%;
+    left: -4%;
     bottom: 10%;
     z-index: 2;
 }
@@ -1778,15 +1778,15 @@ button:hover, button:focus {
 /*Puzzle 3*/
 #images0{
     position: relative;
-    width: 105%;
-    height: 109%;
+    width: 110%;
+    height: 115%;
     z-index: 2;
 }
 #images1{
     position: relative;
-    width: 118%;
-    height: 110%;
-    left: -15%;
+    width: 125%;
+    height: 115%;
+    left: -21%;
     z-index: 2;
 }
 #images2{
@@ -1812,87 +1812,84 @@ button:hover, button:focus {
 }
 #images5{
     position: relative;
-    width: 100%;
-    height: 120%;
+    width: 140%;
+    height: 110%;
     z-index: 2;
-    bottom: 11%;
-    left: 1%;
+    bottom: 10%;
+    left: -4%;
 }
 #images6{
     position: relative;
-    width: 135%;
-    height: 137%;
-    left: -21%;
-    bottom: 11%;
+    width: 140%;
+    height: 140%;
+    left: -22%;
+    bottom: 20%;
     z-index: 2;
 }
 #images7{
     position: relative;
     width: 105%;
-    height: 100%;
+    height: 109%;
     z-index: 2;
-    bottom: -6%;
+    bottom: 4%;
     left: -5%;
 }
 #images8{
     position: relative;
     width: 130%;
-    height: 115%;
-    bottom: -7%;
+    height: 120%;
+    bottom: 1%;
     z-index: 2;
 }
 #images9{
     position: relative;
-    width: 115%;
-    height: 110%;
-    bottom: 9%;
-    left: 1%;
+    width: 140%;
+    height: 125%;
+    bottom: 22%;
+    left: -4%;
     z-index: 2;
 }
 #images10{
     position: relative;
     width: 119%;
-    height: 96%;
-    left: -5%;
-    bottom: -6%;
+    height: 105%;
+    bottom: 2%;
     z-index: 2;
 }
 #images11{
     position: relative;
     width: 125%;
     height: 130%;
-    left: -6%;
-    bottom: 10%;
+    bottom: 14%;
     z-index: 2;
 }
 #images12{
     position: relative;
-    width: 105%;
-    height: 100%;
+    width: 115%;
+    height: 103%;
+    bottom: 3%;
     z-index: 2;
 }
 #images13{
     position: relative;
-    width: 130%;
-    height: 118%;
-    bottom: 18%;
-    left: -15%;
+    width: 135%;
+    height: 120%;
+    bottom: 20%;
+    left: -17%;
     z-index: 2;
 }
 #images14{
     position: relative;
     width: 120%;
-    height: 118%;
+    height: 120%;
     z-index: 2;
-    bottom: 18%;
-    left: -5%;
+    bottom: 20%;
 }
 #images15{
     position: relative;
-    width: 105%;
+    width: 115%;
     height: 100%;
     z-index: 2;
-    left: -5%;
 }
 
 }
@@ -2160,16 +2157,16 @@ button:hover, button:focus {
 }
 #images11{
     position: relative;
-    width: 111%;
+    width: 110%;
     height: 125%;
-    left: -11%;
+    left: -10%;
     bottom: 10%;
     z-index: 2;
 }
 #images12{
     position: relative;
     width: 105%;
-    height: 100%;
+    height: 103%;
     z-index: 2;
 }
 #images13{
@@ -2437,8 +2434,8 @@ button:hover, button:focus {
 }
 #images8{
     position: relative;
-    width: 125%;
-    height: 112%;
+    width: 127%;
+    height: 115%;
     bottom: -7%;
     z-index: 2;
 }
@@ -2447,22 +2444,22 @@ button:hover, button:focus {
     width: 115%;
     height: 110%;
     bottom: 9%;
-    left: 1%;
+    left: 1.5%;
     z-index: 2;
 }
 #images10{
     position: relative;
     width: 119%;
     height: 96%;
-    left: -5%;
+    left: -3%;
     bottom: -6%;
     z-index: 2;
 }
 #images11{
     position: relative;
-    width: 111%;
+    width: 108%;
     height: 125%;
-    left: -11%;
+    left: -2%;
     bottom: 10%;
     z-index: 2;
 }
@@ -2471,6 +2468,7 @@ button:hover, button:focus {
     width: 105%;
     height: 100%;
     z-index: 2;
+    bottom: 0.5%;
 }
 #images13{
     position: relative;

@@ -8,7 +8,7 @@ function creatingGrid() { //2*2 puzzle
     let columns = 2;
 
     for(let i=0; i<rows*columns; i++){ //creating 4divs and 4img
-        let pieceDiv = document.createElement('div') // dreating div element
+        let pieceDiv = document.createElement('div') // creating div element
         pieceDiv.className = "piece"; //class name added
         puzzleContainer.appendChild(pieceDiv); //dynamically created 4 divs with class name and nested them in puzzlecontainer.
         let img = document.createElement("img"); //creating img element
@@ -138,18 +138,26 @@ function handleDropEnd(e) { //modify this function with some sort of if statemen
     e.stopPropagation();
 
     let draggedItem;
-    if (e.type === 'drop') {
-        let data = e.dataTransfer.getData("text/plain"); //retrieving id and moving it the div to target. 
-        draggedItem = document.getElementById(data); 
-    } else if (e.type === 'touchend') {
-        draggedItem = document.getElementById(globalDraggedItemId); 
-    }
-    if (draggedItem) {
-        e.currentTarget.appendChild(draggedItem);
-        globalDraggedItemId = null; // Reset the global variable
+    let targetContainer = e.currentTarget;
+
+    if (targetContainer.querySelector('img')){ //if my dropdiv (target container) has an image already, user cant put another there.
+
+    } else {
+        if (e.type === 'drop') {
+            let data = e.dataTransfer.getData("text/plain"); //retrieving id and moving it the div to target. 
+            draggedItem = document.getElementById(data); 
+        } else if (e.type === 'touchend') {
+            draggedItem = document.getElementById(globalDraggedItemId); 
+        }
+        if (draggedItem) {
+            e.currentTarget.appendChild(draggedItem);
+            globalDraggedItemId = null; // Reset the global variable
+        }
+    
+        checkPosition(); //calling function for alert messages below
+
     }
 
-    checkPosition(); //calling function for alert messages below
 }
 
 
