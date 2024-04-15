@@ -12,13 +12,16 @@ body, main {
     display: flex;
     align-items: center; /* Centered children horizontally */
     justify-content: space-around;
-    background-color: gainsboro;
+    background-color: silver;
 }
-
 
 h1 {
     display: flex;
     justify-content: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2%;
+    color: #333;
 }
 
 .button{
@@ -48,12 +51,10 @@ h1 {
     background-color: #4682B4;
 }
 
-
 #buttons {
     display: flex;
     justify-content: center;
     list-style-type: none;
-    font-size: 16px;
     gap: 2px;
 }
 
@@ -85,9 +86,19 @@ h1 {
     background-color: #D8BFD8;
 }
 
+.button:hover, .button:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+}
+
+button:hover, button:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+} 
+
 @media (max-width: 767px) and (orientation: portrait) { /*Orientation property: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/orientation*/
     
-#containers{
+#containers{ /*All puzzles*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,10 +107,9 @@ h1 {
     height: 80vh;
     border-radius: 20px;
     gap: 2vh; 
-    aspect-ratio: 1 / 1; 
 }
 
-#piece-container{
+#piece-container{ /*All puzzles*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -109,7 +119,7 @@ h1 {
     position: relative;
 }
 
-#puzzle-container{
+#puzzle-container{ /*All puzzles*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -119,7 +129,7 @@ h1 {
     position: relative; 
 }
 
-.piece{
+.piece{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -127,15 +137,24 @@ h1 {
     height: 50%;
 }
 
-.piece2{
+.piece2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
-.drop-zone{
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+
+.drop-zone{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -143,22 +162,29 @@ h1 {
     height: 50%;
 }
 
-.drop-zone2{
+.drop-zone2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%; 
     z-index: 2;
 }
-
-
 #img1{
     position: relative;
     width: 117%;
@@ -166,14 +192,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -183,13 +207,13 @@ h1 {
     z-index: 2;
 }
 
+/*Puzzle 2*/
 #image0 {
     position: relative;
     width: 116%;
     height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
     width: 116%;
@@ -197,15 +221,13 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
     width: 116%;
     height: 115%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
     width: 116%;
@@ -213,7 +235,6 @@ h1 {
     bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
     width: 110%;
@@ -222,41 +243,156 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
-
 #image5{
     position: relative;
     width: 116%;
     height: 110%;
     bottom: 2%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
     width: 116%;
     height: 110%;
-    bottom: 9%;
+    bottom: 10%;
     z-index: 2;
 }
-
 #image7{
     position: relative;
     width: 110%;
     height: 109%;
-    bottom: 8%;
+    bottom: 9%;
     left: -3%;
     z-index: 2;
 }
-
 #image8{
     position: relative;
     width: 116%;
     height: 110%;
-    left: -13%;
-    bottom: 9%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
+}
+
+/*Puzzle 3*/
+#images0{
+    position: relative;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
+    bottom: 11%;
+    z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 125%;
+    height: 112%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
+    left: 1%;
+    z-index: 2;
+}
+#images10{
+    position: relative;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
+    z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 107%;
+    height: 125%;
+    left: -7%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
+    position: relative;
+    width: 120%;
+    height: 118%;
+    z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
 }
 
 }
@@ -294,7 +430,7 @@ h1 {
     margin-top: 5%;
 }
 
-.piece{
+.piece{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -302,12 +438,20 @@ h1 {
     height: 50%;
 }
 
-.piece2{
+.piece2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
+}
+
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
 }
 
 .drop-zone{
@@ -322,17 +466,25 @@ h1 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%; 
     z-index: 2;
 }
-
 #img1{
     position: relative;
     width: 117%;
@@ -340,14 +492,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -357,13 +507,13 @@ h1 {
     z-index: 2;
 }
 
+/*Puzzle 2*/
 #image0 {
     position: relative;
     width: 116%;
     height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
     width: 116%;
@@ -371,15 +521,13 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
     width: 116%;
     height: 115%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
     width: 116%;
@@ -387,7 +535,6 @@ h1 {
     bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
     width: 110%;
@@ -396,42 +543,158 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
-
 #image5{
     position: relative;
     width: 116%;
     height: 110%;
     bottom: 2%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
     width: 116%;
     height: 110%;
-    bottom: 9%;
+    bottom: 10%;
     z-index: 2;
 }
-
 #image7{
     position: relative;
     width: 110%;
     height: 109%;
-    bottom: 8%;
+    bottom: 9%;
     left: -3%;
     z-index: 2;
 }
-
 #image8{
     position: relative;
     width: 116%;
     height: 110%;
-    left: -13%;
-    bottom: 9%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
 }
+
+/*Puzzle 3*/
+#images0{
+    position: relative;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
+    bottom: 11%;
+    z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 125%;
+    height: 112%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
+    left: 1%;
+    z-index: 2;
+}
+#images10{
+    position: relative;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
+    z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 107%;
+    height: 125%;
+    left: -7%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
+    position: relative;
+    width: 120%;
+    height: 118%;
+    z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
+}
+
 
 }
 
@@ -480,11 +743,19 @@ h1 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
-.drop-zone{
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+.drop-zone{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -492,21 +763,29 @@ h1 {
     height: 50%;
 }
 
-.drop-zone2{
+.drop-zone2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%; /* Increased height to overlap */
     z-index: 2;
 }
-
 #img1{
     position: relative;
     width: 117%;
@@ -514,14 +793,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -530,14 +807,13 @@ h1 {
     left: -1%;
     z-index: 2;
 }
-
+/*Puzzle 2*/
 #image0 {
     position: relative;
     width: 116%;
     height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
     width: 116%;
@@ -545,15 +821,13 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
     width: 116%;
     height: 115%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
     width: 116%;
@@ -561,7 +835,6 @@ h1 {
     bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
     width: 110%;
@@ -570,42 +843,158 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
-
 #image5{
     position: relative;
     width: 116%;
     height: 110%;
     bottom: 2%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
     width: 116%;
     height: 110%;
-    bottom: 9%;
+    bottom: 10%;
     z-index: 2;
 }
-
 #image7{
     position: relative;
     width: 110%;
-    height: 108%;
-    bottom: 7%;
+    height: 109%;
+    bottom: 9%;
     left: -3%;
     z-index: 2;
 }
-
 #image8{
     position: relative;
     width: 116%;
     height: 110%;
-    left: -13%;
-    bottom: 9%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
 }
+
+/*Puzzle 3*/
+#images0{
+    position: relative;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
+    bottom: 11%;
+    z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 125%;
+    height: 112%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
+    left: 1%;
+    z-index: 2;
+}
+#images10{
+    position: relative;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
+    z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 107%;
+    height: 125%;
+    left: -7%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
+    position: relative;
+    width: 120%;
+    height: 118%;
+    z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
+}
+
 
 }
 
@@ -642,7 +1031,7 @@ h1 {
     margin-top: 5%;
 }
 
-.piece{
+.piece{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -650,15 +1039,23 @@ h1 {
     height: 50%;
 }
 
-.piece2{
+.piece2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
-.drop-zone{
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+.drop-zone{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -666,21 +1063,29 @@ h1 {
     height: 50%;
 }
 
-.drop-zone2{
+.drop-zone2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%;
     z-index: 2;
 }
-
 #img1{
     position: relative;
     width: 117%;
@@ -688,14 +1093,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -705,14 +1108,13 @@ h1 {
     z-index: 2;
 }
 
-
+/*Puzzle 2*/
 #image0 {
     position: relative;
     width: 116%;
     height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
     width: 116%;
@@ -720,15 +1122,13 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
     width: 116%;
     height: 115%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
     width: 116%;
@@ -736,7 +1136,6 @@ h1 {
     bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
     width: 110%;
@@ -745,47 +1144,161 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
-
 #image5{
     position: relative;
     width: 116%;
     height: 110%;
     bottom: 2%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
     width: 116%;
     height: 110%;
-    bottom: 9%;
+    bottom: 10%;
     z-index: 2;
 }
-
 #image7{
     position: relative;
     width: 110%;
-    height: 108%;
-    bottom: 7%;
-    left: -1%;
+    height: 109%;
+    bottom: 9%;
+    left: -3%;
     z-index: 2;
 }
-
 #image8{
     position: relative;
     width: 116%;
     height: 110%;
-    left: -13%;
-    bottom: 9%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
 }
 
+/*Puzzle 3*/
+#images0{
+    position: relative;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
+    bottom: 11%;
+    z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 125%;
+    height: 112%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
+    left: 1%;
+    z-index: 2;
+}
+#images10{
+    position: relative;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
+    z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 110%;
+    height: 125%;
+    left: -3%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
+    position: relative;
+    width: 120%;
+    height: 118%;
+    z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
+}
 }
 
 @media only screen and (min-width: 1024px) and (orientation: portrait){
-    #containers{
+#containers{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -818,7 +1331,7 @@ h1 {
     margin-top: 5%;
 }
 
-.piece{
+.piece{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -826,15 +1339,23 @@ h1 {
     height: 50%;
 }
 
-.piece2{
+.piece2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
-.drop-zone{
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+.drop-zone{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -842,21 +1363,29 @@ h1 {
     height: 50%;
 }
 
-.drop-zone2{
+.drop-zone2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%;
     z-index: 2;
 }
-
 #img1{
     position: relative;
     width: 117%;
@@ -864,14 +1393,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -881,13 +1408,13 @@ h1 {
     z-index: 2;
 }
 
+/*Puzzle 2*/
 #image0 {
     position: relative;
     width: 116%;
     height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
     width: 116%;
@@ -895,15 +1422,13 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
     width: 116%;
     height: 115%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
     width: 116%;
@@ -911,7 +1436,6 @@ h1 {
     bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
     width: 110%;
@@ -920,42 +1444,157 @@ h1 {
     left: -4%;
     z-index: 2;
 }
-
 #image5{
     position: relative;
     width: 116%;
     height: 110%;
     bottom: 2%;
-    left: -13%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
     width: 116%;
     height: 110%;
-    bottom: 9%;
+    bottom: 10%;
     z-index: 2;
 }
-
 #image7{
     position: relative;
     width: 110%;
-    height: 108%;
-    bottom: 7%;
-    left: -1%;
+    height: 109%;
+    bottom: 9%;
+    left: -3%;
     z-index: 2;
 }
-
 #image8{
     position: relative;
     width: 116%;
     height: 110%;
-    left: -13%;
-    bottom: 9%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
 }
 
+/*Puzzle 3*/
+#images0{
+    position: relative;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
+    bottom: 11%;
+    z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 125%;
+    height: 112%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
+    left: 1%;
+    z-index: 2;
+}
+#images10{
+    position: relative;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
+    z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 111%;
+    height: 125%;
+    left: -11%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
+    position: relative;
+    width: 120%;
+    height: 118%;
+    z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
+}
 }
 
 @media only screen and (min-width: 1024px) and (orientation: landscape){
@@ -991,7 +1630,7 @@ h1 {
     margin-top: 5%;
 }
 
-.piece{
+.piece{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -999,15 +1638,23 @@ h1 {
     height: 50%;
 }
 
-.piece2{
+.piece2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
-.drop-zone{
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+.drop-zone{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1015,21 +1662,29 @@ h1 {
     height: 50%;
 }
 
-.drop-zone2{
+.drop-zone2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%;
     z-index: 2;
 }
-
 #img1{
     position: relative;
     width: 117%;
@@ -1037,14 +1692,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -1054,80 +1707,192 @@ h1 {
     z-index: 2;
 }
 
+/*Puzzle 2*/
 #image0 {
     position: relative;
-    width: 130%;
-    height: 130%;
+    width: 116%;
+    height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
-    width: 120%;
-    height: 117%;
-    left: 9%;
+    width: 116%;
+    height: 115%;
+    left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
-    width: 130%;
-    height: 110%;
-    left: -8%;
+    width: 116%;
+    height: 115%;
+    left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
-    width: 120%;
-    height: 115%;
-    bottom: 10%;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
-    width: 105%;
-    height: 115%;
-    bottom: 10%;
-    left: 1%;
+    width: 110%;
+    height: 110%;
+    bottom: 2.4%;
+    left: -4%;
     z-index: 2;
 }
-
-
 #image5{
     position: relative;
-    width: 115%;
-    height: 116%;
-    bottom: 9%;
-    left: -12%;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
-    width: 130%;
-    height: 119%;
-    bottom: 18%;
+    width: 116%;
+    height: 110%;
+    bottom: 10%;
+    z-index: 2;
+}
+#image7{
+    position: relative;
+    width: 110%;
+    height: 109%;
+    bottom: 9%;
+    left: -3%;
+    z-index: 2;
+}
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
 }
 
-#image7{
+/*Puzzle 3*/
+#images0{
     position: relative;
-    width: 150%;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
+    bottom: 11%;
+    z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 130%;
     height: 115%;
-    bottom: 14%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
     left: 1%;
     z-index: 2;
 }
-
-#image8{
+#images10{
+    position: relative;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
+    z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 125%;
+    height: 130%;
+    left: -6%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
     position: relative;
     width: 120%;
-    height: 119%;
-    left: -14%;
-    bottom: 18%;
+    height: 118%;
     z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
 }
 
 }
@@ -1166,7 +1931,7 @@ h1 {
     margin-top: 5%;
 }
 
-.piece{
+.piece{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1174,15 +1939,23 @@ h1 {
     height: 50%;
 }
 
-.piece2{
+.piece2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
-.drop-zone{
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+.drop-zone{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1190,21 +1963,29 @@ h1 {
     height: 50%;
 }
 
-.drop-zone2{
+.drop-zone2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%;
     z-index: 2;
 }
-
 #img1{
     position: relative;
     width: 117%;
@@ -1212,14 +1993,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -1229,80 +2008,192 @@ h1 {
     z-index: 2;
 }
 
+/*Puzzle 2*/
 #image0 {
     position: relative;
-    width: 120%;
-    height: 120%;
+    width: 116%;
+    height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
-    width: 110%;
+    width: 116%;
     height: 115%;
-    left: 1%;
+    left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
-    width: 110%;
+    width: 116%;
     height: 115%;
-    left: -8%;
+    left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
-    width: 120%;
+    width: 116%;
     height: 110%;
     bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
     width: 110%;
     height: 110%;
-    bottom: 2%;
-    left: 1%;
+    bottom: 2.4%;
+    left: -4%;
     z-index: 2;
 }
-
-
 #image5{
     position: relative;
-    width: 110%;
-    height: 108%;
-    bottom: 1%;
-    left: -7%;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
-    width: 120%;
+    width: 116%;
     height: 110%;
-    bottom: 9%;
+    bottom: 10%;
     z-index: 2;
 }
-
 #image7{
     position: relative;
     width: 110%;
-    height: 108%;
-    bottom: 7%;
-    left: 1%;
+    height: 109%;
+    bottom: 9%;
+    left: -3%;
+    z-index: 2;
+}
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
 }
 
-#image8{
+/*Puzzle 3*/
+#images0{
     position: relative;
-    width: 110%;
-    height: 112%;
-    left: -7%;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
     bottom: 11%;
     z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 125%;
+    height: 112%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
+    left: 1%;
+    z-index: 2;
+}
+#images10{
+    position: relative;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
+    z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 111%;
+    height: 125%;
+    left: -11%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
+    position: relative;
+    width: 120%;
+    height: 118%;
+    z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
 }
 
 }
@@ -1340,7 +2231,7 @@ h1 {
     margin-top: 5%;
 }
 
-.piece{
+.piece{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1348,15 +2239,23 @@ h1 {
     height: 50%;
 }
 
-.piece2{
+.piece2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
-.drop-zone{
+.piece3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+.drop-zone{ /*Puzzle 1*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1364,21 +2263,29 @@ h1 {
     height: 50%;
 }
 
-.drop-zone2{
+.drop-zone2{ /*Puzzle 2*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
 }
 
+.drop-zone3{ /*Puzzle 3*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25%;
+    height: 25%;
+}
+
+/*Puzzle 1*/
 #img0{
     position: relative;
     width: 100%;
     height: 120%;
     z-index: 2;
 }
-
 #img1{
     position: relative;
     width: 117%;
@@ -1386,14 +2293,12 @@ h1 {
     left: -17%;
     z-index: 2;
 }
-
 #img2{
     position: relative;
     width: 116.5%;
     height: 100%;
     z-index: 2;
 }
-
 #img3{
     position: relative;
     top: -16%;
@@ -1403,79 +2308,192 @@ h1 {
     z-index: 2;
 }
 
+/*Puzzle 2*/
 #image0 {
     position: relative;
-    width: 130%;
-    height: 130%;
+    width: 116%;
+    height: 115%;
     z-index: 2;
 }
-
 #image1 {
     position: relative;
-    width: 120%;
-    height: 117%;
-    left: 3%;
+    width: 116%;
+    height: 115%;
+    left: -4%;
     z-index: 2;
 }
-
 #image2{
     position: relative;
-    width: 130%;
-    height: 110%;
+    width: 116%;
+    height: 115%;
     left: -16%;
     z-index: 2;
 }
-
 #image3{
     position: relative;
-    width: 120%;
-    height: 115%;
-    bottom: 10%;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
     z-index: 2;
 }
-
 #image4{
     position: relative;
-    width: 105%;
-    height: 115%;
-    bottom: 10%;
-    left: 1%;
+    width: 110%;
+    height: 110%;
+    bottom: 2.4%;
+    left: -4%;
     z-index: 2;
 }
-
 #image5{
     position: relative;
-    width: 115%;
-    height: 116%;
-    bottom: 9%;
-    left: -12%;
+    width: 116%;
+    height: 110%;
+    bottom: 2%;
+    left: -16%;
     z-index: 2;
 }
-
 #image6{
     position: relative;
-    width: 130%;
-    height: 119%;
-    bottom: 18%;
+    width: 116%;
+    height: 110%;
+    bottom: 10%;
+    z-index: 2;
+}
+#image7{
+    position: relative;
+    width: 110%;
+    height: 109%;
+    bottom: 9%;
+    left: -3%;
+    z-index: 2;
+}
+#image8{
+    position: relative;
+    width: 116%;
+    height: 110%;
+    left: -16%;
+    bottom: 10%;
     z-index: 2;
 }
 
-#image7{
+/*Puzzle 3*/
+#images0{
     position: relative;
-    width: 150%;
-    height: 115%;
-    bottom: 14%;
+    width: 105%;
+    height: 109%;
+    z-index: 2;
+}
+#images1{
+    position: relative;
+    width: 118%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images2{
+    position: relative;
+    width: 129%;
+    height: 110%;
+    left: -15%;
+    z-index: 2;
+}
+#images3{
+    position: relative;
+    width: 104%;
+    height: 125%;
+    left: -4%;
+    z-index: 2;
+}
+#images4{
+    position: relative;
+    width: 121%;
+    height: 137%;
+    z-index: 2;
+    bottom: 12%;
+}
+#images5{
+    position: relative;
+    width: 100%;
+    height: 120%;
+    z-index: 2;
+    bottom: 11%;
+    left: 1%;
+}
+#images6{
+    position: relative;
+    width: 135%;
+    height: 137%;
+    left: -21%;
+    bottom: 11%;
+    z-index: 2;
+}
+#images7{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    bottom: -6%;
+    left: -5%;
+}
+#images8{
+    position: relative;
+    width: 125%;
+    height: 112%;
+    bottom: -7%;
+    z-index: 2;
+}
+#images9{
+    position: relative;
+    width: 115%;
+    height: 110%;
+    bottom: 9%;
     left: 1%;
     z-index: 2;
 }
-
-#image8{
+#images10{
     position: relative;
-    width: 115%;
-    height: 119%;
-    left: -12%;
-    bottom: 18%;
+    width: 119%;
+    height: 96%;
+    left: -5%;
+    bottom: -6%;
     z-index: 2;
+}
+#images11{
+    position: relative;
+    width: 111%;
+    height: 125%;
+    left: -11%;
+    bottom: 10%;
+    z-index: 2;
+}
+#images12{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+}
+#images13{
+    position: relative;
+    width: 130%;
+    height: 118%;
+    bottom: 18%;
+    left: -15%;
+    z-index: 2;
+}
+#images14{
+    position: relative;
+    width: 120%;
+    height: 118%;
+    z-index: 2;
+    bottom: 18%;
+    left: -5%;
+}
+#images15{
+    position: relative;
+    width: 105%;
+    height: 100%;
+    z-index: 2;
+    left: -5%;
 }
 
 }

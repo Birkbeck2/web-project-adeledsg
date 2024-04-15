@@ -3,17 +3,17 @@
 // I. Dynamically creating 4 div (box for the pieces) within my Puzzle container and then the img element within each div.
 let puzzleContainer = document.getElementById("puzzle-container");
 
-function creatingGrid() {
+function creatingGrid() { //2*2 puzzle
     let rows = 2;
     let columns = 2;
 
-    for(let i=0; i<rows*columns; i++){
-        let pieceDiv = document.createElement('div')
-        pieceDiv.className = "piece";
+    for(let i=0; i<rows*columns; i++){ //creating 4divs and 4img
+        let pieceDiv = document.createElement('div') // dreating div element
+        pieceDiv.className = "piece"; //class name added
         puzzleContainer.appendChild(pieceDiv); //dynamically created 4 divs with class name and nested them in puzzlecontainer.
-        let img = document.createElement("img");
-        img.className = "images";
-        img.id = `img${i}`;
+        let img = document.createElement("img"); //creating img element
+        img.className = "images"; //class name added
+        img.id = `img${i}`; //unique ids
         img.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695 
         pieceDiv.appendChild(img); //dynamically created 4  with individual id elements and nested them in the divs above.
     }
@@ -40,23 +40,23 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
     let resetButton = document.getElementById('reset');
 
     // Event listener for the start button
-    let drop0 = document.getElementById("drop-0");
-    let drop3 = document.getElementById("drop-3");
 
     startButton.addEventListener('click', function(e){
         startButton.style.display = 'none'; // Hiding the start button
         resetButton.style.display = 'flex'; // Showing the reset button
-        drop0.style.borderBottom = "1px solid black"; //Adding borders to some of the dropZone divs when start is clicked to give user indications of the pieces' places
-        drop0.style.borderRight = "1px solid black";
-        drop3.style.borderTop = "1px solid black";
-        drop3.style.borderLeft = "1px solid black";
+
+        Array.from(dropZone).forEach(function(zone){ //adding borders to div to indicate users where to put the pieces
+            zone.style.border = "1px solid black";
+       });
+
         let pieces = document.getElementsByClassName("piece");
         let element = e.target; //moving pieces (div which include their nested img) currently in Puzzle container to Piece container on click event for start button.
         e.preventDefault();
-        Array.from(pieces).forEach(function(piece){ //Iterating through my piece divs (DOM interprets it as an array)
+
+        Array.from(pieces).forEach(function(piece){ //Iterating through my piece divs (DOM understand class name as an array of all the element with that class)
             let leftPosition = Math.floor(Math.random()*50); //giving them random position (iterated through numbers for the multiplier to make sure that the piece where relatively contained within the piece container.
             let topPosition = Math.floor(Math.random()*50);
-            piece.style.position = "absolute";
+            piece.style.position = "absolute"; // https://www.youtube.com/watch?v=sp6Di21WVjE&t=0s&ab_channel=CryptersInfotech
             piece.style.left = `${leftPosition}%`;
             piece.style.top = `${topPosition}%`
             pieceContainer.appendChild(piece);
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
 
 
 //III. After adding the event, I realised that I needed to create new divs that will remain in the puzzle container so I can later drop the divs that have the nested img in them.
-function creatingDropZones() { 
+function creatingDropZones() { //2*2 puzzle
     let rows = 2;
     let columns = 2;
 
@@ -107,10 +107,9 @@ Array.from(pieceDiv).forEach(function(pieceDiv, i){
 /*Process explained:
 After programming drag and drop, I realised that it does not work for touch input, only mouse input. 
 Instead I need to use touch start, move and end. As such, to make my code as clear as possible, I have created 3 functions below. 
-Since event listeners can take 2 parameters, I am creating two events listeners. 
-Each take either drag or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
+Since event listeners can take 2 parameters, I am creating three functions. 
+Each take either drag/drop/move or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
 let draggableImages = document.getElementsByClassName("images");
-let piece = document.getElementsByClassName("piece");
 var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
 
 function handleStart(e) {
@@ -137,6 +136,7 @@ function handleOverMove(e){
 function handleDropEnd(e) { //modify this function with some sort of if statement so that no bug with touch event. (what is hapenign is that the img are otherwise already nested in a drop and cant be moved to drop zones)
     e.preventDefault();
     e.stopPropagation();
+
     let draggedItem;
     if (e.type === 'drop') {
         let data = e.dataTransfer.getData("text/plain"); //retrieving id and moving it the div to target. 
@@ -164,19 +164,6 @@ Array.from(dropZone).forEach(function(zone){
     zone.addEventListener('drop', handleDropEnd);
     zone.addEventListener('touchend', handleDropEnd);
 });
-
- //This works for drag but for touch, I need to do some sort of if else statement so the browser detects the correct dropzones/original.
- /*Array.from(piece).forEach(function(pieces){ 
-    if (pieces.querySelector('img') === null){
-        console.log(pieces);
-        pieces.addEventListener('dragover', handleOverMove);
-        pieces.addEventListener('touchmove', handleOverMove);
-        pieces.addEventListener('drop', handleDropEnd);
-        pieces.addEventListener('touchend', handleDropEnd);
-    } 
-});
-*/
-
 
 // V. Finish message
 let correctPosition = { // creating an object using individual ids created earlier.
@@ -210,6 +197,9 @@ function checkPosition() {
             alert("You are almost there! But some pieces are in the wrong place.");
         }, 500); // Delay to allow for the puzzle to be visually completed before showing the message
     } else if (allPlaced && allCorrect) { // All pieces are placed correctly
+        Array.from(dropZone).forEach(function(drop){ //purely aesthetics considerations, otherwise, we would see the borders
+            drop.style.border = "none";
+        })
         setTimeout(() => {
             alert("Congratulations! You completed the puzzle.");
         }, 500);

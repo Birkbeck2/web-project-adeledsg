@@ -1,21 +1,25 @@
+// 4*4 puzzle grid
+
 let puzzleContainer = document.getElementById("puzzle-container");
 
-function creatingGrid() {
+function creatingGrid() { //4*4 puzzle
     let rows = 4;
     let columns = 4;
 
     for(let i=0; i<rows*columns; i++){
         let pieceDiv = document.createElement('div')
         pieceDiv.className = "piece3";
-        puzzleContainer.appendChild(pieceDiv); //dynamically created 4 divs with class name and nested them in puzzlecontainer.
+        puzzleContainer.appendChild(pieceDiv); 
         let img = document.createElement("img");
         img.className = "images";
         img.id = `images${i}`;
-        img.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695 
-        pieceDiv.appendChild(img); //dynamically created 4  with individual id elements and nested them in the divs above.
+        img.setAttribute("draggable", "true"); 
+        pieceDiv.appendChild(img); 
     }
 }
 creatingGrid();
+
+//Adding images
 
 let img0 = document.getElementById("images0");
 img0.src = "puzzle3/piece1.png"; 
@@ -64,3 +68,175 @@ img14.src = "puzzle3/piece15.png";
 
 let img15 = document.getElementById("images15");
 img15.src = "puzzle3/piece16.png"; 
+
+//Adding drop zones and unique Ids to all divs 
+
+function creatingDropZones() { 
+    let rows = 4;
+    let columns = 4;
+
+    for(let i=0; i<rows*columns; i++){
+        let dropZone = document.createElement('div')
+        dropZone.className = "drop-zone3";
+        puzzleContainer.appendChild(dropZone);
+    }
+}
+creatingDropZones();
+
+let dropZone = document.getElementsByClassName("drop-zone3");
+
+Array.from(dropZone).forEach(function(dropZone, i){
+    dropZone.id = `zone-${i}`; 
+});
+
+let pieceDiv = document.getElementsByClassName("piece3");
+
+Array.from(pieceDiv).forEach(function(pieceDiv, i){
+    pieceDiv.id = `dragzone-${i}`;
+});
+
+//Start and Reset Button
+let pieceContainer = document.getElementById("piece-container");
+
+document.addEventListener('DOMContentLoaded', function () { 
+    let startButton = document.getElementById('start');
+    let resetButton = document.getElementById('reset');
+
+    startButton.addEventListener('click', function(e){
+        startButton.style.display = 'none';
+        resetButton.style.display = 'flex'; 
+
+       Array.from(dropZone).forEach(function(zone){
+            zone.style.border = "1px solid black";
+       });
+
+        let pieces = document.getElementsByClassName("piece3");
+        let element = e.target; 
+        e.preventDefault();
+        
+        Array.from(pieces).forEach(function(piece){
+            let leftPosition = Math.floor(Math.random()*50);
+            let topPosition = Math.floor(Math.random()*50);
+            piece.style.position = "absolute"; 
+            piece.style.left = `${leftPosition}%`;
+            piece.style.top = `${topPosition}%`
+            pieceContainer.appendChild(piece);
+        });
+    });
+
+    resetButton.addEventListener('click', function(e) {
+        resetButton.style.display = 'none'; 
+        startButton.style.display = 'flex';
+        let element = e.target;
+        window.location.reload(); 
+    });
+});
+
+//Drag/touch events
+
+let draggableImages = document.getElementsByClassName("images");
+var globalDraggedItemId = null;
+
+function handleStart(e) {
+    e.stopPropagation();
+    if (e.type === 'dragstart') {
+        console.log(e);
+        e.dataTransfer.setData('text/plain', e.currentTarget.id); 
+    } 
+    if (e.type === 'touchstart') { 
+        e.preventDefault();
+    }
+    globalDraggedItemId = e.currentTarget.id; 
+}
+
+function handleOverMove(e){ 
+    e.preventDefault();
+    e.stopPropagation();
+    let draggedImage = e.currentTarget;
+    draggedImage.style.zIndex = 1000;  
+    let originalContainer = draggedImage.parentElement;
+    originalContainer.style.zIndex = 1; 
+}
+
+function handleDropEnd(e) { 
+    e.preventDefault();
+    e.stopPropagation(); 
+    let draggedItem;
+    if (e.type === 'drop') {
+        let data = e.dataTransfer.getData("text/plain");
+        draggedItem = document.getElementById(data); 
+    } else if (e.type === 'touchend') {
+        draggedItem = document.getElementById(globalDraggedItemId); 
+    }
+    if (draggedItem) {
+        e.currentTarget.appendChild(draggedItem);
+        globalDraggedItemId = null;
+    }
+
+    checkPosition();
+}
+
+Array.from(draggableImages).forEach(function(image){
+    image.addEventListener('dragstart', handleStart);
+    image.addEventListener('touchstart', handleStart);
+});
+
+Array.from(dropZone).forEach(function(zone){ 
+    zone.addEventListener('dragover', handleOverMove);
+    zone.addEventListener('touchmove', handleOverMove);
+    zone.addEventListener('drop', handleDropEnd);
+    zone.addEventListener('touchend', handleDropEnd);
+});
+
+//Alert message when puzzle completed
+let correctPosition = {
+    images0: "zone-0",
+    images1: "zone-1",
+    images2: "zone-2",
+    images3: "zone-3",
+    images4: "zone-4",
+    images5: "zone-5",
+    images6: "zone-6",
+    images7: "zone-7",
+    images8: "zone-8",
+    images9: "zone-9",
+    images10: "zone-10",
+    images11: "zone-11",
+    images12: "zone-12",
+    images13: "zone-13",
+    images14: "zone-14",
+    images15: "zone-15",
+};
+
+function checkPosition() {
+    let allPlaced = true;
+    let allCorrect = true;
+
+    for (let [imgId, dropId] of Object.entries(correctPosition)) {
+        let image = document.getElementById(imgId);
+        let currentDrop = image.parentElement.id;
+
+       if (!image.parentElement || !image.parentElement.classList.contains('drop-zone3')) {
+        allPlaced = false;
+        }
+
+        if (currentDrop !== dropId) {
+        allCorrect = false;
+        }
+    }
+
+    if (allPlaced && !allCorrect) {
+        setTimeout(() => {
+            alert("You are almost there! But some pieces are in the wrong place.");
+        }, 500);
+    } else if (allPlaced && allCorrect) {
+        Array.from(dropZone).forEach(function(drop){ //purely aesthetics considerations, otherwise, we would see the borders
+            drop.style.border = "none";
+        })
+        setTimeout(() => {
+            alert("Congratulations! You completed the puzzle.");
+        }, 500);
+    }
+
+    return true;
+}
