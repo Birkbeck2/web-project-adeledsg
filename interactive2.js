@@ -23,30 +23,57 @@ creatingGrid();
 
 let img0 = document.getElementById("image0");
 img0.src = "puzzle2/Piece1.png"; 
+img0.width = "679";
+img0.height = "700";
+img0.alt = "puzzle piece 1"
 
 let img1 = document.getElementById("image1");
 img1.src = "puzzle2/Piece2.png"; 
+img1.width = "610";
+img1.height = "704";
+img1.alt = "puzzle piece 2"
 
 let img2 = document.getElementById("image2");
 img2.src = "puzzle2/Piece3.png"; 
+img2.width = "703";
+img2.height = "693";
+img2.alt = "puzzle piece 3"
 
 let img3 = document.getElementById("image3");
 img3.src = "puzzle2/Piece4.png"; 
+img3.width = "698";
+img3.height = "610";
+img3.alt = "puzzle piece 4"
 
 let img4 = document.getElementById("image4");
 img4.src = "puzzle2/Piece5.png"; 
+img4.width = "610";
+img4.height = "610";
+img4.alt = "puzzle piece 5"
 
 let img5 = document.getElementById("image5");
 img5.src = "puzzle2/Piece6.png"; 
+img5.width = "700";
+img5.height = "610";
+img5.alt = "puzzle piece 6"
 
 let img6 = document.getElementById("image6");
 img6.src = "puzzle2/Piece7.png"; 
+img6.width = "701";
+img6.height = "702";
+img6.alt = "puzzle piece 7"
 
 let img7 = document.getElementById("image7");
 img7.src = "puzzle2/Piece8.png"; 
+img7.width = "612";
+img7.height = "685";
+img7.alt = "puzzle piece 8"
 
 let img8 = document.getElementById("image8");
 img8.src = "puzzle2/Piece9.png"; 
+img8.width = "700";
+img8.height = "703";
+img8.alt = "puzzle piece 9"
 
 //Adding drop zones and unique Ids to all divs 
 
@@ -211,7 +238,7 @@ function checkPosition() {
             alert("You are almost there! But some pieces are in the wrong place.");
         }, 500);
     } else if (allPlaced && allCorrect) {
-        Array.from(dropZone).forEach(function(drop){ //purely aesthetics considerations, otherwise, we would see the borders
+        Array.from(dropZone).forEach(function(drop){
             drop.style.border = "none";
         })
         setTimeout(() => {

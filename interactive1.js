@@ -1,5 +1,3 @@
-// Inspired by https://www.youtube.com/watch?v=sp6Di21WVjE&t=0s&ab_channel=CryptersInfotech.
-
 // I. Dynamically creating 4 div (box for the pieces) within my Puzzle container and then the img element within each div.
 let puzzleContainer = document.getElementById("puzzle-container");
 
@@ -10,29 +8,41 @@ function creatingGrid() { //2*2 puzzle
     for(let i=0; i<rows*columns; i++){ //creating 4divs and 4img
         let pieceDiv = document.createElement('div') // creating div element
         pieceDiv.className = "piece"; //class name added
-        puzzleContainer.appendChild(pieceDiv); //dynamically created 4 divs with class name and nested them in puzzlecontainer.
+        puzzleContainer.appendChild(pieceDiv); //Nesting them in puzzlecontainer.
         let img = document.createElement("img"); //creating img element
         img.className = "images"; //class name added
         img.id = `img${i}`; //unique ids
-        img.setAttribute("draggable", "true"); // https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695 
-        pieceDiv.appendChild(img); //dynamically created 4  with individual id elements and nested them in the divs above.
+        img.setAttribute("draggable", "true"); // Attribute required for events below, source: https://medium.com/@tatismolin/how-to-implement-drag-and-drop-functionality-using-vanilla-javascript-9ddfe2402695 
+        pieceDiv.appendChild(img); //dynamically created 4  with individual id elements and nested them in the divs just created above.
     }
 }
-creatingGrid();
+creatingGrid(); //calling function
 
-let img0 = document.getElementById("img0");
-img0.src = "puzzle1/piece1.png"; //adding the source for the img elements created above.
+let img0 = document.getElementById("img0"); //Retrieving img elements just created
+img0.src = "puzzle1/piece1.png"; //adding the source for the img elements.
+img0.width = "200"; // Specifying width -space when browser loading the page
+img0.height = "232"; //Specifying height -space when browser loading the page
+img0.alt = "puzzle piece 1" //Specifying al text - accessibility
 
-let img1 = document.getElementById("img1");
-img1.src = "puzzle1/piece2.png"; 
+let img1 = document.getElementById("img1"); //Same as above, done 4 times
+img1.src = "puzzle1/piece2.png";
+img1.width = "232";
+img1.height = "200";
+img1.alt = "puzzle piece 2"
 
 let img2 = document.getElementById("img2");
 img2.src = "puzzle1/piece3.png"; 
+img2.width = "232";
+img2.height = "200";
+img2.alt = "puzzle piece 3"
 
 let img3 = document.getElementById("img3");
 img3.src = "puzzle1/piece4.png"; 
+img3.width = "199";
+img3.height = "232";
+img3.alt = "puzzle piece 4"
 
-//II. Adding event listeners to start and reset buttons
+//II. Adding event listeners to start and reset buttons (Game Management)
 let pieceContainer = document.getElementById("piece-container");
 
 document.addEventListener('DOMContentLoaded', function () { // Assuring page is loaded
@@ -45,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
         startButton.style.display = 'none'; // Hiding the start button
         resetButton.style.display = 'flex'; // Showing the reset button
 
-        Array.from(dropZone).forEach(function(zone){ //adding borders to div to indicate users where to put the pieces
-            zone.style.border = "1px solid black";
+        Array.from(dropZone).forEach(function(zone){ //Iterating through elements with this class name as DOM returns the elements as an array
+            zone.style.border = "1px solid black"; //adding borders to div to indicate users where to put the pieces
        });
 
         let pieces = document.getElementsByClassName("piece");
@@ -56,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
         Array.from(pieces).forEach(function(piece){ //Iterating through my piece divs (DOM understand class name as an array of all the element with that class)
             let leftPosition = Math.floor(Math.random()*50); //giving them random position (iterated through numbers for the multiplier to make sure that the piece where relatively contained within the piece container.
             let topPosition = Math.floor(Math.random()*50);
-            piece.style.position = "absolute"; // https://www.youtube.com/watch?v=sp6Di21WVjE&t=0s&ab_channel=CryptersInfotech
+            piece.style.position = "absolute";
             piece.style.left = `${leftPosition}%`;
             piece.style.top = `${topPosition}%`
             pieceContainer.appendChild(piece);
@@ -74,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () { // Assuring page is 
 
 
 //III. After adding the event, I realised that I needed to create new divs that will remain in the puzzle container so I can later drop the divs that have the nested img in them.
-function creatingDropZones() { //2*2 puzzle
+function creatingDropZones() { //2*2 puzzle - same principle as creatingGrid()
     let rows = 2;
     let columns = 2;
 
@@ -89,7 +99,7 @@ creatingDropZones();
 
 //IV. Implementing logic of the game with drag and drop events:
 
-/* A. Creating unique ID dynamically to my drag and drop divs, to later be able to create a bolean function to match the correct place of each piece*/
+/* A. Creating unique ID dynamically to my drag and drop divs, to later be able to create a function to match the correct place of each piece*/
 let dropZone = document.getElementsByClassName("drop-zone");
 
 Array.from(dropZone).forEach(function(dropZone, i){
@@ -105,15 +115,14 @@ Array.from(pieceDiv).forEach(function(pieceDiv, i){
 //B. Adding drag and drop events to the divs. Source: https://www.youtube.com/watch?v=_G8G1OrEOrI&ab_channel=DarwinTech
 
 /*Process explained:
-After programming drag and drop, I realised that it does not work for touch input, only mouse input. 
+After implementing drag and drop, I realised that it does not work for mobile devices as they are mouse based events.
 Instead I need to use touch start, move and end. As such, to make my code as clear as possible, I have created 3 functions below. 
-Since event listeners can take 2 parameters, I am creating three functions. 
-Each take either drag/drop/move or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
+Since event listeners can take 2 parameters, each take either drag/drop/move or touch event as a firt parameter along with calling the appropriate function that will handle their common logic and account for their differences.*/
 let draggableImages = document.getElementsByClassName("images");
 var globalDraggedItemId = null; // set data and get data are methods that do not exist for touch events. Creating global variable to maintain state.
 
 function handleStart(e) {
-    e.stopPropagation(); //trying to ensure that the click event is just on the image not its parent
+    e.stopPropagation(); // ensure that the click event is just on the image not its parent
     if (e.type === 'dragstart') {
         console.log(e);
         e.dataTransfer.setData('text/plain', e.currentTarget.id); //Seeting the data to add id to my target element that is my div and retriving it in drop- source: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
@@ -121,7 +130,7 @@ function handleStart(e) {
     if (e.type === 'touchstart') { 
         e.preventDefault(); 
     }
-    globalDraggedItemId = e.currentTarget.id; // setting data
+    globalDraggedItemId = e.currentTarget.id; // setting data, source https://stackoverflow.com/questions/53530511/imitating-drag-and-drop-events-with-touch-events-for-mobile-devices
 }
 
 function handleOverMove(e){ 
@@ -133,7 +142,7 @@ function handleOverMove(e){
     originalContainer.style.zIndex = 1; 
 }
 
-function handleDropEnd(e) { //modify this function with some sort of if statement so that no bug with touch event. (what is hapenign is that the img are otherwise already nested in a drop and cant be moved to drop zones)
+function handleDropEnd(e) { 
     e.preventDefault();
     e.stopPropagation();
 
@@ -189,12 +198,12 @@ function checkPosition() {
         let image = document.getElementById(imgId);
         let currentDrop = image.parentElement.id;
 
-       // Checking if piece are placed or not in the drop zone divs
+       // Checking if all pieces are placed in the drop zone divs
        if (!image.parentElement || !image.parentElement.classList.contains('drop-zone')) {
         allPlaced = false;
         }
 
-        // Checking if the images' parents' id are that of the dropzone id = aka they are they correctly placed
+        // Checking if the images' parents' id are that of the dropzone id => aka they are they correctly placed
         if (currentDrop !== dropId) {
         allCorrect = false;
         }
@@ -215,5 +224,3 @@ function checkPosition() {
 
     return true;
 }
-
-// VI. Allowing user mistakes and dragging/touching pieces back => being done above
