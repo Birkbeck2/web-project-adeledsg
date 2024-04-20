@@ -23,51 +23,99 @@ creatingGrid();
 
 let img0 = document.getElementById("images0");
 img0.src = "puzzle3/piece1.png"; 
+img0.width = "438";
+img0.height = "438";
+img0.alt = "puzzle piece 1"
 
 let img1 = document.getElementById("images1");
 img1.src = "puzzle3/piece2.png"; 
+img1.width = "514";
+img1.height = "438";
+img1.alt = "puzzle piece 2"
 
 let img2 = document.getElementById("images2");
 img2.src = "puzzle3/piece3.png"; 
+img2.width = "590";
+img2.height = "438";
+img2.alt = "puzzle piece 3"
 
 let img3 = document.getElementById("images3");
-img3.src = "puzzle3/piece4.png"; 
+img3.src = "puzzle3/piece4.png";
+img3.width = "438";
+img3.height = "510";
+img3.alt = "puzzle piece 4"
 
 let img4 = document.getElementById("images4");
 img4.src = "puzzle3/piece5.png";  
+img4.width = "515";
+img4.height = "594";
+img4.alt = "puzzle piece 5"
 
 let img5 = document.getElementById("images5");
 img5.src = "puzzle3/piece6.png"; 
+img5.width = "438";
+img5.height = "513";
+img5.alt = "puzzle piece 6"
 
 let img6 = document.getElementById("images6");
 img6.src = "puzzle3/piece7.png";  
+img6.width = "595";
+img6.height = "591";
+img6.alt = "puzzle piece 7"
 
 let img7 = document.getElementById("images7");
 img7.src = "puzzle3/piece8.png"; 
+img7.width = "439";
+img7.height = "438";
+img7.alt = "puzzle piece 8"
 
 let img8 = document.getElementById("images8");
 img8.src = "puzzle3/piece9.png"; 
+img8.width = "518";
+img8.height = "523";
+img8.alt = "puzzle piece 9"
 
 let img9 = document.getElementById("images9");
 img9.src = "puzzle3/piece10.png"; 
+img9.width = "517";
+img9.height = "517";
+img9.alt = "puzzle piece 10"
 
 let img10 = document.getElementById("images10");
 img10.src = "puzzle3/piece11.png"; 
+img10.width = "516";
+img10.height = "439";
+img10.alt = "puzzle piece 11"
 
 let img11 = document.getElementById("images11");
 img11.src = "puzzle3/piece12.png"; 
+img11.width = "438";
+img11.height = "574";
+img11.alt = "puzzle piece 12"
 
 let img12 = document.getElementById("images12");
 img12.src = "puzzle3/piece13.png"; 
+img12.width = "438";
+img12.height = "438";
+img12.alt = "puzzle piece 13"
 
 let img13 = document.getElementById("images13");
 img13.src = "puzzle3/piece14.png"; 
+img13.width = "588";
+img13.height = "514";
+img13.alt = "puzzle piece 14"
 
 let img14 = document.getElementById("images14");
 img14.src = "puzzle3/piece15.png"; 
+img14.width = "515";
+img14.height = "519";
+img14.alt = "puzzle piece 15"
 
 let img15 = document.getElementById("images15");
 img15.src = "puzzle3/piece16.png"; 
+img15.width = "438";
+img15.height = "439";
+img15.alt = "puzzle piece 16"
 
 //Adding drop zones and unique Ids to all divs 
 
@@ -237,7 +285,7 @@ function checkPosition() {
             alert("You are almost there! But some pieces are in the wrong place.");
         }, 500);
     } else if (allPlaced && allCorrect) {
-        Array.from(dropZone).forEach(function(drop){ //purely aesthetics considerations, otherwise, we would see the borders
+        Array.from(dropZone).forEach(function(drop){
             drop.style.border = "none";
         })
         setTimeout(() => {
